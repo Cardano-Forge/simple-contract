@@ -1,0 +1,40 @@
+{
+  "preamble": {
+    "title": "cardano-forge/always-true",
+    "description": "Aiken contracts for project 'cardano-forge/always-true'",
+    "version": "0.0.0",
+    "plutusVersion": "v3",
+    "compiler": {
+      "name": "Aiken",
+      "version": "v1.1.10+b25afa2"
+    },
+    "license": "Apache-2.0"
+  },
+  "validators": [
+    {
+      "title": "simple_script.simple_script.mint",
+      "redeemer": {
+        "title": "_redeemer",
+        "schema": {
+          "$ref": "#/definitions/Data"
+        }
+      },
+      "compiledCode": "59010301010029800aba2aba1aab9faab9eaab9dab9a48888896600264653001300700198039804000cc01c0092225980099b8748000c01cdd500144c96600264660020026eb0c030c034c034c034c034c034c034c034c034c028dd5001912cc00400629422b30013371e6eb8c03400522011c44de2ad7ed4bbf0a3b47c1a37515340a5bcb34e3f50634b9ccd050ab008a518998010011807000a01240311325980099b8748008c024dd5000c4cdc4a4101a15b5936dc6eb4c030c028dd5000c5282010300b30093754601660126ea8c02cc030c030c030c030c030c030c030c024dd50014528200e375c601460106ea800a29410060c01c004c00cdd5003c52689b2b200201",
+      "hash": "f502faec5f3cb58ca1670a685f85fb7d96ee1f1711d7c8ba0d79cdd2"
+    },
+    {
+      "title": "simple_script.simple_script.else",
+      "redeemer": {
+        "schema": {}
+      },
+      "compiledCode": "59010301010029800aba2aba1aab9faab9eaab9dab9a48888896600264653001300700198039804000cc01c0092225980099b8748000c01cdd500144c96600264660020026eb0c030c034c034c034c034c034c034c034c034c028dd5001912cc00400629422b30013371e6eb8c03400522011c44de2ad7ed4bbf0a3b47c1a37515340a5bcb34e3f50634b9ccd050ab008a518998010011807000a01240311325980099b8748008c024dd5000c4cdc4a4101a15b5936dc6eb4c030c028dd5000c5282010300b30093754601660126ea8c02cc030c030c030c030c030c030c030c024dd50014528200e375c601460106ea800a29410060c01c004c00cdd5003c52689b2b200201",
+      "hash": "f502faec5f3cb58ca1670a685f85fb7d96ee1f1711d7c8ba0d79cdd2"
+    }
+  ],
+  "definitions": {
+    "Data": {
+      "title": "Data",
+      "description": "Any Plutus data."
+    }
+  }
+}
