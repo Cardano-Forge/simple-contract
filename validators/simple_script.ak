@@ -1,7 +1,7 @@
 use aiken/collection/list
+use aiken/interval.{is_entirely_before}
 use cardano/assets.{PolicyId}
 use cardano/transaction.{Transaction}
-use time.{must_be_before_lower_bound}
 
 ///Simple script simulator to mock the basic time locked policy
 validator simple_script {
@@ -19,7 +19,7 @@ validator simple_script {
 
     //Check that the tx is before the expiration time
     let is_not_expired =
-      must_be_before_lower_bound(self.validity_range, expiration_time)
+      is_entirely_before(self.validity_range, expiration_time)
 
     and {
       is_signed?,
