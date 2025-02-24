@@ -39,9 +39,9 @@ const input = {
       purpose: "mint",
       hash: hash,
       redeemer: {
-        type: "json",
-        value: "d87a80",
-      }, // Empty Array Tag 122, it does nothing in this case.
+        type: "hex",
+        value: "00",
+      }, // Empty Constructor, it does nothing in this case.
     },
   ],
   requiredSigners: [admin.key_hash],
