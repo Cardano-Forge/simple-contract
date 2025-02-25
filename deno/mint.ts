@@ -4,8 +4,8 @@ import {
   PrivateKey,
 } from "npm:@emurgo/cardano-serialization-lib-nodejs@14.1.0"; // only required due to signing in the backend.
 
-import customer from "./customer.json" with { type: "json" };
-import admin from "./admin.json" with { type: "json" };
+import customer from "../../customer.json" with { type: "json" };
+import admin from "../../admin.json" with { type: "json" };
 
 const X_API_KEY = "CgYuz62xAS7EfM0hCP1gz1aOeHlQ4At36pGwnnLf";
 const API_ENDPOINT = "https://preprod.api.ada-anvil.app/v2/services";
@@ -15,8 +15,8 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-// Update to fit your released Smart Contract hash
-const hash = "888f9fe900850da3b543f8736582940ef8fe7e84208abaa88b7f4513";
+// NOTE: Update to match your released Smart Contract hash
+const hash = "eb7bddc5b588e238d2974d544a479b6bc0dc06852b38d12308ac62e5";
 
 const input = {
   changeAddress: customer.base_address_preprod,
@@ -24,7 +24,7 @@ const input = {
   mint: [
     {
       version: "cip25",
-      assetName: "mrabdibdi_1",
+      assetName: "anvil_doc_1",
       assetNameFormat: "utf8",
       policyId: hash,
       type: "plutus",
@@ -39,8 +39,8 @@ const input = {
       purpose: "mint",
       hash: hash,
       redeemer: {
-        type: "json",
-        value: "d87a80",
+        type: "hex",
+        value: "00",
       }, // Empty Array Tag 122, it does nothing in this case.
     },
   ],

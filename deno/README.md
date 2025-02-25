@@ -157,7 +157,7 @@ const linkBlueprintAndTxHash = await fetch(`${API_ENDPOINT}/blueprints`,
   });
 
 const updatedBlueprint = await linkBlueprintAndTxHash.json()
-console.log("updatedBlueprint", updatedBlueprint);
+console.log("updatedBlueprint", JSON.stringify(updatedBlueprint));
 ```
 
 - The `policyId` and `hash` (in this case this is the same value for both), can be found in the `plutus.json` in the first validator `validators[0].hash`.
@@ -168,10 +168,9 @@ console.log("updatedBlueprint", updatedBlueprint);
 deno run -A deploy.ts
 ```
 
-This script will return a `TxHash`, and work first time.
+This script will return a `TxHash`, and will work first time.
 
-> Tx Hash Received when writting this document: `2627e3c5c9dfcb2a851d2ba83426cd6299ba412176df4b7ad63a6aa062d0c403`
-> Tx Hash After Update: `671d89e3ae126c864aa69aa0225a4df56dddf499bb63a089e197ca6b861a4b65`
+> **Note**: If you made a mistake and nee to update the smart contract (or when the hash changes), you can run the `deploy.ts` script again to overwrite the blueprint in anvil backend, if you do not want to overwrite it, you need to change the name of your contract.
 ---
 
 # How to mint an Asset
@@ -198,8 +197,8 @@ TODO: Explain this payload in details.
       "purpose": "mint",
       "hash": "SMART_CONTRACT_HASH",
       "redeemer": {
-        "type": "json",
-        "value": "",
+        "type": "hex",
+        "value": "00",
       } // There is no redeemer in this specific example.
     }
   ],
@@ -218,8 +217,8 @@ import {
   PrivateKey,
 } from "npm:@emurgo/cardano-serialization-lib-nodejs@14.1.0"; // only required due to signing in the backend.
 
-import customer from "./customer.json" with { type: "json" };
-import admin from "./admin.json" with { type: "json" };
+import customer from "../../customer.json" with { type: "json" };
+import admin from "../../admin.json" with { type: "json" };
 
 const X_API_KEY = "CgYuz62xAS7EfM0hCP1gz1aOeHlQ4At36pGwnnLf";
 const API_ENDPOINT = "https://preprod.api.ada-anvil.app/v2/services";
@@ -229,7 +228,8 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-const hash = "326c8a2692c848a951039a124d10343d57c73dac80d21e0f72a7ffd5";
+// NOTE: Update to match your released Smart Contract hash
+const hash = "eb7bddc5b588e238d2974d544a479b6bc0dc06852b38d12308ac62e5";
 
 const input = {
   changeAddress: customer.base_address_preprod,
@@ -237,7 +237,7 @@ const input = {
   mint: [
     {
       version: "cip25",
-      assetName: "mrabdibdi_1",
+      assetName: "anvil_doc_1",
       assetNameFormat: "utf8",
       policyId: hash,
       type: "plutus",
@@ -252,8 +252,8 @@ const input = {
       purpose: "mint",
       hash: hash,
       redeemer: {
-        type: "json",
-        value: "d87a80",
+        type: "hex",
+        value: "00",
       }, // Empty Array Tag 122, it does nothing in this case.
     },
   ],
