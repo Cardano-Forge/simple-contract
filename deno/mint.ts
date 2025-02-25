@@ -41,7 +41,7 @@ const input = {
       redeemer: {
         type: "hex",
         value: "00",
-      }, // Empty Array Tag 122, it does nothing in this case.
+      }, // Empty Constructor, it does nothing in this case.
     },
   ],
   requiredSigners: [admin.key_hash],
